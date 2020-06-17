@@ -1,0 +1,20 @@
+[
+    {
+        "setting" : "prod",
+        "db" : "postgres://postgres:haha@localhost:5432/fitness",
+        "auth0" : {
+            "client_id" : "",
+            "client_secret" : "",
+            "redirect_uri" : ""
+        }
+    },
+    {
+        "setting" : "local",
+        "db" : "postgres://postgres:haha@localhost:5432/fitness",
+        "auth0" : {
+            "client_id" : "zs8zCSFx03xiQ1mjkVHZIiOU3WNhwaM5",
+            "client_secret" : "M583kq4-Lv0Yfh1xbeV1eZgw3C0LsawVuGvTZbfhqMdy2_6WiIcioIAXKlGokt6e",
+            "redirect_uri" : "http://127.0.0.1:5000/callback"
+        }
+    }
+]
