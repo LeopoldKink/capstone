@@ -34,6 +34,7 @@ from werkzeug.utils import secure_filename
 from auth.auth import AuthError, requires_auth, verify_decode_jwt
 from models import db, migrate, Instructor, Exercice
 
+
 def create_app(test_config=None):
 
     app = Flask(__name__)
@@ -287,3 +288,5 @@ def create_app(test_config=None):
         }), 500
 
     return app
+
+app = create_app()
