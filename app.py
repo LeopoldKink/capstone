@@ -44,7 +44,8 @@ def create_app(test_config=None):
     CORS(app)
     cors = CORS(app, resources={r"/*": {"origins": "*"}})
     app.config['SECRET_KEY'] = '5791628bb0b13cefhri3j0c676dtrfefeefde280ba245'
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+    #app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+    app.config['SQLALCHEMY_DATABASE_URI'] = "postgres://postgres:haha@localhost:5432/fitness_api"
 
     # ACTIVE SETTING
     def getJSON(filePathAndName):
@@ -177,6 +178,28 @@ def create_app(test_config=None):
             'success' : success,
             'created' : new_exercice.id,
             'exercice name' : new_exercice.name
+        })
+
+    @app.route('/create/instructor', methods=['POST'])
+    @requires_auth('post:workout')
+    def create_instructor(accessinfo):
+        success = False
+        try:
+            body = request.get_json()
+            name = body['name']
+            profile_pic_path = body['profile_pic_path']
+            age = body['age']
+            new_instructor = Instructor(name=name, profile_pic_path=profile_pic_path, age=age)
+            db.session.add(new_instructor)
+            db.session.commit()
+            success = True
+        except:
+            print(sys.exc_info())
+            abort(404)
+        return jsonify({
+            'success' : success,
+            'created' : new_instructor.id,
+            'exercice name' : new_instructor.name
         })
 
 

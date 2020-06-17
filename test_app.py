@@ -86,7 +86,7 @@ class FitnessTestCase(unittest.TestCase):
 #DELETE
 
     def test_delete_exercice(self):
-        res = self.client().delete('/delete/exercice/11', headers={"Authorization": "Bearer {}".format(os.environ.get('admin_token'))}) #IMPORTANT /delete/exercice/ last Value + 1 for next test
+        res = self.client().delete('/delete/exercice/3', headers={"Authorization": "Bearer {}".format(os.environ.get('admin_token'))}) #IMPORTANT /delete/exercice/ last Value + 1 for next test
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)
