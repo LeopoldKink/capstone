@@ -44,8 +44,8 @@ def create_app(test_config=None):
     CORS(app)
     cors = CORS(app, resources={r"/*": {"origins": "*"}})
     app.config['SECRET_KEY'] = '5791628bb0b13cefhri3j0c676dtrfefeefde280ba245'
-    #app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
-    app.config['SQLALCHEMY_DATABASE_URI'] = "postgres://postgres:haha@localhost:5432/fitness_api"
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+    ###app.config['SQLALCHEMY_DATABASE_URI'] = "postgres://postgres:haha@localhost:5432/fitness_api"
 
     # ACTIVE SETTING
     def getJSON(filePathAndName):
