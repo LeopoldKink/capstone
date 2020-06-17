@@ -1,4 +1,3 @@
 .vscode/
 migrations/
 __pycache__/
-active_setting.json
