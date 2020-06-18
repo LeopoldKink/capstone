@@ -95,7 +95,6 @@ def create_app(test_config=None):
     @app.route('/login')
     def login():
         try:
-            s = auth0.authorize_redirect(redirect_uri=env["auth0"]["redirect_uri"], audience='fitnessapi')
             return auth0.authorize_redirect(redirect_uri=env["auth0"]["redirect_uri"], audience='fitnessapi')
         except:
             print(sys.exc_info())
@@ -156,7 +155,7 @@ def create_app(test_config=None):
 
     #########################################################   POST  #########################################################   POST  ########################################### 
 
-    @app.route('/create/exercice', methods=['POST'])
+    @app.route('/exercices', methods=['POST'])
     @requires_auth('post:workout')
     def create_exercice(accessinfo):
         success = False
@@ -180,7 +179,7 @@ def create_app(test_config=None):
             'exercice name' : new_exercice.name
         })
 
-    @app.route('/create/instructor', methods=['POST'])
+    @app.route('/instructors', methods=['POST'])
     @requires_auth('post:workout')
     def create_instructor(accessinfo):
         success = False
@@ -207,7 +206,7 @@ def create_app(test_config=None):
     #########################################################   DELETE  #########################################################   DELETE  ########################################### 
 
 
-    @app.route('/delete/exercice/<int:ex_id>', methods=['DELETE']) 
+    @app.route('/exercices/<int:ex_id>', methods=['DELETE']) 
     @requires_auth('delete:workout')
     def delete_exercice(accessinfo, ex_id):
         success = False
@@ -225,7 +224,7 @@ def create_app(test_config=None):
 
     #########################################################   PATCH  #########################################################   PATCH  ########################################### 
 
-    @app.route('/patch/exercice/<int:ex_id>', methods=['PATCH'])
+    @app.route('/exercices/<int:ex_id>', methods=['PATCH'])
     @requires_auth('patch:workout')
     def patch_exercice(accessinfo, ex_id):
         success = False

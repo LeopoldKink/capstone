@@ -69,7 +69,7 @@ class FitnessTestCase(unittest.TestCase):
 #POST
 
     def test_post_exercice(self):
-        res = self.client().post('/create/exercice', json=self.new_exercice, headers={"Authorization": "Bearer {}".format(os.environ.get('admin_token'))})
+        res = self.client().post('/exercices', json=self.new_exercice, headers={"Authorization": "Bearer {}".format(os.environ.get('admin_token'))})
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)
@@ -77,7 +77,7 @@ class FitnessTestCase(unittest.TestCase):
         self.assertEqual(data['exercice name'], 'push ups')
 
     def test_post_exercice_not_allowed(self):
-        res = self.client().post('/create/exercice', json=self.new_exercice)
+        res = self.client().post('/exercices', json=self.new_exercice)
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 401)
@@ -86,14 +86,14 @@ class FitnessTestCase(unittest.TestCase):
 #DELETE
 
     def test_delete_exercice(self):
-        res = self.client().delete('/delete/exercice/3', headers={"Authorization": "Bearer {}".format(os.environ.get('admin_token'))}) #IMPORTANT /delete/exercice/ last Value + 1 for next test
+        res = self.client().delete('/exercices/1', headers={"Authorization": "Bearer {}".format(os.environ.get('admin_token'))}) #IMPORTANT /delete/exercice/ last Value + 1 for next test
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['success'], True)
 
     def test_404_delete_exercice_not_found(self):
-        res = self.client().delete('/delete/exercice/999', headers={"Authorization": "Bearer {}".format(os.environ.get('admin_token'))})
+        res = self.client().delete('/exercices/999', headers={"Authorization": "Bearer {}".format(os.environ.get('admin_token'))})
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 404)
@@ -104,14 +104,14 @@ class FitnessTestCase(unittest.TestCase):
 #PATCH
 
     def test_patch_exercice(self):
-        res = self.client().patch('/patch/exercice/3', json=self.new_exercice, headers={"Authorization": "Bearer {}".format(os.environ.get('admin_token'))})
+        res = self.client().patch('/exercices/3', json=self.new_exercice, headers={"Authorization": "Bearer {}".format(os.environ.get('admin_token'))})
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['success'], True)
 
     def test_404_patch_exercice_not_found(self):
-        res = self.client().patch('/patch/exercice/999', json=self.new_exercice, headers={"Authorization": "Bearer {}".format(os.environ.get('admin_token'))})
+        res = self.client().patch('/exercices/999', json=self.new_exercice, headers={"Authorization": "Bearer {}".format(os.environ.get('admin_token'))})
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 404)

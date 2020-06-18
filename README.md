@@ -1,7 +1,13 @@
 Fitness Api Documentation
 
+Motivation for project:
+
+My motivation for this project is to be able to put all my new skills to the test.
+
+
 Getting Started / Authentication
-    - Base URL: Currently this app can only be run locally and is not hosted as a base URL. The backend app is hosted at the default, http://127.0.0.1:5000/.
+- The 2 JWTs are located in the .env file.
+    - Base URL: https://fitness4711.herokuapp.com/exercices, retruns a list of all exercices.
     - This app requires authentication for the post, patch and delte endpoints. And for the endpoint to show a specific instructor.
     - There a two roles:
         --> Admin: can perform anything: patch:workout, post:workout, delete:workout, get:instructor

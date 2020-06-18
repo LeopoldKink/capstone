@@ -1,4 +1,5 @@
 import json
+import os
 import sys
 from flask import request, _request_ctx_stack, abort
 from functools import wraps
@@ -7,7 +8,7 @@ from urllib.request import urlopen
 from flask import session
 
 
-AUTH0_DOMAIN = 'hnc.auth0.com'  
+AUTH0_DOMAIN = os.environ['AUTH0_DOMAIN']  
 ALGORITHMS = ['RS256']
 API_AUDIENCE = 'fitnessapi'   
 
