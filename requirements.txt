@@ -55,7 +55,7 @@ paypal-checkout-serversdk==1.0.1
 paypalhttp==1.0.0
 paypalrestsdk==1.13.1
 pdfkit==0.6.1
-Pillow==6.2.1
+Pillow==9.0.1
 pluggy==0.13.1
 psycopg2==2.8.5
 psycopg2-binary==2.8.4
